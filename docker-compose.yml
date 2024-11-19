@@ -1,0 +1,34 @@
+services:
+  backend:
+    image: cars
+    container_name: cars
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    networks:
+    - cars-network
+    
+  database:
+    container_name: "cars-db"
+    image: postgres
+    volumes:
+      - cars-db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "cars"
+      POSTGRES_PASSWORD: "cars"
+      POSTGRES_DB: "cars"
+    ports:
+      - "5434:5432"
+    networks:
+      - cars-network
+
+networks:
+  cars-network:
+    name: cars-network
+
+volumes:
+  cars-db-data:
