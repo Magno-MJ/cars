@@ -1,4 +1,4 @@
-# FLIX API
+# CARS FULLSTACK DJANGO PROJECT
 
 ## 📔 Description
 
